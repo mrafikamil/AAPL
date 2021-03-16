@@ -15,6 +15,7 @@ public class Numbers {
     // --------------------------------------------
 
     public static void main(String[] args) {
+        
         String[] intList;
         int size;
         Scanner scan = new Scanner(System.in);

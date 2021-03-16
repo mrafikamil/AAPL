@@ -6,7 +6,6 @@ package rafi.w1c3;
 // Represents a sales person who has a first name, last
 // name, and total number of sales.
 // *******************************************************
-
 public class Salesperson implements Comparable {
 
     private String firstName, lastName;
@@ -42,10 +41,17 @@ public class Salesperson implements Comparable {
     // (last, then first) breaking a tie.
     //--------------------------------------------------
 
+    @Override
     public int compareTo(Object other) {
-        int result;
-        Comparable key = 
-        return result;
+        
+        if (this.totalSales > ((Salesperson) other).getSales()) {
+            return 1;
+        }
+        if (this.totalSales < ((Salesperson) other).getSales()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
     //-------------------------
