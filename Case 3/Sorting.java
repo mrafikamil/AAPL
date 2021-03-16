@@ -1,6 +1,6 @@
 package rafi.w1c3;
 
-//********************************************************************
+ //********************************************************************
 // Sorting.java Author: Lewis/Loftus
 //
 // Demonstrates the selection sort and insertion sort algorithms.
