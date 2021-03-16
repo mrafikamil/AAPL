@@ -44,6 +44,7 @@ public class Salesperson implements Comparable {
 
     public int compareTo(Object other) {
         int result;
+        Comparable key = 
         return result;
     }
 
