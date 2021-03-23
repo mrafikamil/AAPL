@@ -14,35 +14,35 @@ public class CirclePanel extends JPanel {
     private final int CIRCLE_SIZE = 50;
     private int x, y;
     private Color c;
+    JButton left = new JButton("Left");
+    JButton right = new JButton("Right");
+    JButton up = new JButton("Up");
+    JButton down = new JButton("Down");
     //--------------------------------------------------------------- 
     // Set up circle and buttons to move it. 
     //--------------------------------------------------------------- 
 
     public CirclePanel(int width, int height) {
         // Set coordinates so circle starts in middle 
-        x = (width / 2) - (CIRCLE_SIZE / 2);
-        y = (height / 2) - (CIRCLE_SIZE / 2);
+        x = (width / 2) - (CIRCLE_SIZE / 2); //w 400 = 175 -> 335
+        y = (height / 2) - (CIRCLE_SIZE / 2); //h 300 = 125 -> 225
         c = Color.green;
         // Need a border layout to get the buttons on the bottom 
         this.setLayout(new BorderLayout());
         // Create buttons to move the circle 
-        JButton left = new JButton("Left");
-        JButton right = new JButton("Right");
-        JButton up = new JButton("Up");
-        JButton down = new JButton("Down");
-        
+
         //Add mnemonic to the buttons
         left.setMnemonic(KeyEvent.VK_L);
         right.setMnemonic(KeyEvent.VK_R);
         up.setMnemonic(KeyEvent.VK_U);
         down.setMnemonic(KeyEvent.VK_D);
-        
+
         //Add tooltip to the buttons
         left.setToolTipText("Move left by 20");
         right.setToolTipText("Move right by 20");
         up.setToolTipText("Move up by 20");
         down.setToolTipText("Move down by 20");
-    
+
         // Add listeners to the buttons 
         left.addActionListener(new MoveListener(-20, 0));
         right.addActionListener(new MoveListener(20, 0));
@@ -57,14 +57,12 @@ public class CirclePanel extends JPanel {
         buttonPanel.add(down);
         // Add the button panel to the bottom of the main panel 
         this.add(buttonPanel, "South");
+
     }
-    
-    
-    
+
     //--------------------------------------------------------------- 
     // Draw circle on CirclePanel 
     //--------------------------------------------------------------- 
-
     public void paintComponent(Graphics page) {
         super.paintComponent(page);
         page.setColor(c);
@@ -94,6 +92,26 @@ public class CirclePanel extends JPanel {
             x += dx;
             y += dy;
             repaint();
+            if (x > 320) {
+                right.setEnabled(false);
+            } else if (x < 320){
+                right.setEnabled(true);
+            }
+            if (x < 0 ) {
+                left.setEnabled(false);
+            } else if (x > 0){
+                left.setEnabled(true);
+            }
+            if (y < 0) {
+                up.setEnabled(false);
+            } else if (y > 0){
+                up.setEnabled(true);
+            }
+            if (y > 180) {
+                down.setEnabled(false);
+            } else if(y < 180){
+                down.setEnabled(true);
+            }
         }
     }
 }
